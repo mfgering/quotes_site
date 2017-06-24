@@ -2,3 +2,4 @@ Django
 django-annoying
 django-bootstrap3
 django-extensions
+django-ckeditor
