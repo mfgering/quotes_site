@@ -1,6 +1,8 @@
 Django
 django-annoying
 django-bootstrap3
+django-bootstrap-themes
+django-debug-toolbar
 django-extensions
 django-ckeditor
 whitenoise
