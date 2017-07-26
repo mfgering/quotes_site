@@ -7,6 +7,7 @@ import main.views
 
 urlpatterns = [
     url(r'^$', main.views.index, name='index'),
+    url(r'^about$', main.views.about, name='about'),
     url(r'^main/', include('main.urls')),
     url(r'^admin/', admin.site.urls),
 ]

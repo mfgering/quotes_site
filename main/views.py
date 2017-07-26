@@ -13,5 +13,10 @@ def random_quote(request):
 
     return HttpResponse(template.render(context, request))
 
+def about(request):
+    template = loader.get_template('main/about.html')
+    context = {}
+
+    return HttpResponse(template.render(context, request))
 
 
