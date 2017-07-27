@@ -4,5 +4,9 @@
 {% block title %}{{ quote.title|title }}{% endblock %}
 
 {% block content %}
+    {% if quote.subtitle %}<h2>{{ quote.subtitle }}</h2>{% endif %}
     {% autoescape off %}{{ quote.content }}{% endautoescape %}
+    {%  if quote.category %}
+        <p></p><p><b>{{ quote.category.name }}</b></p>
+    {% endif %}
 {% endblock %}

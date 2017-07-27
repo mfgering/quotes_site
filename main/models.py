@@ -1,14 +1,20 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 
+class CategoryManager(models.Manager):
+    def get_by_natural_key(self, name):
+        return self.get(name=name)
+
 class Category(models.Model):
+    objects = CategoryManager()
+    name = models.CharField(max_length=255, unique=True)
+
     class Meta:
         verbose_name_plural = 'categories'
 
-    name = models.CharField(max_length=255)
-
 class Quote(models.Model):
     title = models.CharField(max_length=255)
+    subtitle = models.CharField(max_length=255, null=True)
     content = RichTextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
