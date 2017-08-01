@@ -12,6 +12,7 @@ def index(request):
 
 def random_quote(request):
     template = loader.get_template('main/quote.html')
+    #TODO: create filter according to prefs
     quote = Quote.objects.order_by('?').first()
     context = {'quote': quote}
 
@@ -34,7 +35,6 @@ def preferences(request):
             form = PreferencesForm(category_prefs=category_prefs)
             response = render(request, 'main/preferences.html', {'form': form})
     else:
-        category_prefs = get_category_prefs(request)
         form = PreferencesForm(category_prefs=category_prefs)
         response = render(request, 'main/preferences.html', {'form': form})
     return response
@@ -46,7 +46,7 @@ def get_category_prefs(request):
     else:
         category_prefs = dict()
         for category in Category.objects.order_by('name'):
-            category_prefs[category.pk] = True
+            category_prefs[str(category.pk)] = True
     return category_prefs
 
 def set_category_prefs(response, form):
@@ -54,7 +54,8 @@ def set_category_prefs(response, form):
     for field_name in form.fields:
         field = form.fields[field_name]
         if hasattr(field, 'category_pk'):
-            category_prefs[field.category_pk] = form.cleaned_data[field_name]
+            category_prefs[str(field.category_pk)] = form.cleaned_data[field_name]
+    response.set_cookie('category_prefs', json.dumps(category_prefs))
     return category_prefs
 
 

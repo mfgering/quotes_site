@@ -9,8 +9,8 @@ class PreferencesForm(forms.Form):
         for category in Category.objects.order_by('name'):
             checkbox = forms.BooleanField(label=category.name, required=False)
             checkbox.category_pk = category.pk
-            if category.pk in category_prefs:
-                checkbox.initial = category_prefs[category.pk]
+            if str(category.pk) in category_prefs:
+                checkbox.initial = category_prefs[str(category.pk)]
             else:
                 checkbox.initial = True
             self.fields['category_%s' % category.pk] = checkbox
