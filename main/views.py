@@ -1,6 +1,6 @@
 import json
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 from django.template import loader
 from .models import Category, Quote
@@ -16,6 +16,16 @@ def random_quote(request):
     quote = Quote.objects.filter(category_id__in=category_keys).order_by('?').first()
     context = {'quote': quote}
     return HttpResponse(template.render(context, request))
+
+def random_quote_json(request):
+    category_keys = [int(pk) for pk, v in get_category_prefs(request).items() if v]
+    quote = Quote.objects.filter(category_id__in=category_keys).order_by('?').first()
+    response_data = {
+        'quote_title': quote.title,
+        'quote_subtitle': quote.subtitle,
+        'quote_content': quote.content,
+        'category_name': quote.category.name}
+    return JsonResponse(response_data)
 
 def about(request):
     template = loader.get_template('main/about.html')
