@@ -12,11 +12,9 @@ def index(request):
 
 def random_quote(request):
     template = loader.get_template('main/quote.html')
-    #TODO: create filter according to prefs
     category_keys = [int(pk) for pk, v in get_category_prefs(request).items() if v]
     quote = Quote.objects.filter(category_id__in=category_keys).order_by('?').first()
     context = {'quote': quote}
-
     return HttpResponse(template.render(context, request))
 
 def about(request):
