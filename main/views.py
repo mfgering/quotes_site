@@ -1,6 +1,6 @@
 import json
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 from django.template import loader
 from .models import Category, Quote
@@ -8,14 +8,27 @@ from .forms import PreferencesForm
 
 
 def index(request):
-    return random_quote(request)
+    return random_quote_ajax(request)
 
-def random_quote(request):
-    template = loader.get_template('main/quote.html')
+def random_quote_ajax(request):
+    template = loader.get_template('main/quote_ajax.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+def random_quote_json(request):
     category_keys = [int(pk) for pk, v in get_category_prefs(request).items() if v]
     quote = Quote.objects.filter(category_id__in=category_keys).order_by('?').first()
-    context = {'quote': quote}
-    return HttpResponse(template.render(context, request))
+    response_data = {
+        'quote': {
+            'title': quote.title,
+            'subtitle': quote.subtitle,
+            'content': quote.content,
+        },
+        'category': {
+            'name': quote.category.name
+        }
+    }
+    return JsonResponse(response_data)
 
 def about(request):
     template = loader.get_template('main/about.html')

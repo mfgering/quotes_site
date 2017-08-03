@@ -1,9 +1,11 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 
+
 class CategoryManager(models.Manager):
     def get_by_natural_key(self, name):
         return self.get(name=name)
+
 
 class Category(models.Model):
     objects = CategoryManager()
@@ -12,9 +14,9 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'categories'
 
+
 class Quote(models.Model):
     title = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255, null=True)
     content = RichTextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-

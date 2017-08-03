@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title %}{{ quote.title|title }}{% endblock %}
+
+{% block content %}
+    <div id="quote_content">
+
+    </div>
+{% endblock %}
+
+{% block bootstrap3_extra_head %}
+    <script src="{% static "main/js/quote.js" %}"></script>
+{% endblock %}
