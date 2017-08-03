@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'cw91mu-*o&huhumfb2hf&#))ym9jgae@t$eo^upnw0f1(du4hv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False if os.environ.get("DEBUG") is None else True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['quote.klezy.xyz']
 
 INTERNAL_IPS = ['127.0.0.1']
 
