@@ -20,7 +20,7 @@ def random_quote_json(request):
     quote = Quote.objects.filter(category_id__in=category_keys).order_by('?').first()
     quote.views += 1
     quote.save()
-    return JsonResponse(response_data_for(quote))
+    return JsonResponse(response_data_for(request, quote))
 
 def quote_sentiment_json(request, quote_id, sentiment):
     quote = Quote.objects.get(id=quote_id)
@@ -29,10 +29,14 @@ def quote_sentiment_json(request, quote_id, sentiment):
     elif sentiment == 'dislike':
         quote.dislikes += 1
     quote.save()
-    return JsonResponse(response_data_for(quote))
+    return JsonResponse(response_data_for(request, quote))
 
-def response_data_for(quote):
+def response_data_for(request, quote):
+    template = loader.get_template('main/quote_content.html')
+    context = {'quote': quote}
+    content = template.render(context, request)
     return {
+        'content': content,
         'quote': {
             'id': quote.id,
             'title': quote.title,

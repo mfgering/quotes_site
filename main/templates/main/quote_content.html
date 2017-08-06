@@ -1,0 +1,16 @@
+{% load bootstrap3 %}
+{% load static %}
+{% if quote.title %}<h1>{{ quote.title }}</h1>{% endif %}
+{% if quote.subtitle %}<h2>{{ quote.subtitle }}</h2>{% endif %}
+<div id="quote_content" quote_id="{{ quote.id }}">
+    {% autoescape off %}{{ quote.content }}{% endautoescape %}
+</div>
+{% if quote.category %}<p><b>{{ quote.category.name }}</b></p>{% endif %}
+<div id="quote_stats">
+    <div class="stat">Views: {{ quote.views }}</div>
+    <div class="stat">Likes: {{ quote.likes }}</div>
+    <div class="stat">Dislikes: {{ quote.dislikes }}</div>
+</div>
+<div id="quote_sentiments">
+    <i id="button_like" value="like" class="glyphicon glyphicon-thumbs-up"></i> <i id="button_dislike" value="dislike" class="glyphicon glyphicon-thumbs-down"></i>
+</div>
