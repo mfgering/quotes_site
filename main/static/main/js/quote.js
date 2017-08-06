@@ -28,19 +28,47 @@ function quote_from_server() {
 }
 
 function quote_to_doc(response) {
-    $('#quote_content').empty();
-    $('.container h1').text(response.quote.title);
-    if(response.quote.subtitle) {
-        $('.container h1').text(response.quote.title);
-        $('#quote_content').append('<h2>' + response.quote.subtitle + '</h2>');
+    quote = response.quote;
+    category = response.category;
+    $('#quote_content').empty().data('quote', quote).data('category', category);
+    $('.container h1').text(quote.title);
+    if(quote.subtitle) {
+        $('.container h1').text(quote.title);
+        $('#quote_content').append('<h2>' + quote.subtitle + '</h2>');
     }
-    if(response.quote.content) {
-        $('#quote_content').append(response.quote.content);
+    if(quote.content) {
+        $('#quote_content').append(quote.content);
     }
-    if(response.category) {
-        if(response.category.name){
-            $('#quote_content').append('<p><b>' + response.category.name + '</b></p>');
+    if(category) {
+        if(category.name){
+            $('#quote_content').append('<p><b>' + category.name + '</b></p>');
         }
     }
+    $('#quote_content').append('<div id="quote_stats"></div>').
+        append('<p id="sentiments"><i id="button_like" value="like" class="glyphicon glyphicon-thumbs-up"></i> <i id="button_dislike" value="dislike" class="glyphicon glyphicon-thumbs-down"></i></p>');
+    update_stats(quote);
+    $('#button_like,#button_dislike').click(function(e){
+        e.preventDefault();
+        $.ajax({
+            url:"/main/ajax/sentiment/"+$('#quote_content').data().quote.id+'/'+$(this).attr('value'),
+            type:"GET",
+            success:function(response) {
+                quote = response.quote;
+                category = response.category;
+                update_stats(quote);
+                $('#sentiments').empty()
+            },
+            error:function(){
+                alert("error");
+            }
 
+        });
+    });
+
+
+}
+
+function update_stats(quote) {
+    $('#quote_stats').empty().append('Views: '+quote.views+' Likes: '+
+        quote.likes+' Dislikes: '+quote.dislikes);
 }

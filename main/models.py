@@ -20,3 +20,6 @@ class Quote(models.Model):
     subtitle = models.CharField(max_length=255, null=True)
     content = RichTextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    views = models.IntegerField(default=0)
+    likes = models.IntegerField(default=0)
+    dislikes = models.IntegerField(default=0)

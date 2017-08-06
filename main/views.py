@@ -18,17 +18,34 @@ def random_quote_ajax(request):
 def random_quote_json(request):
     category_keys = [int(pk) for pk, v in get_category_prefs(request).items() if v]
     quote = Quote.objects.filter(category_id__in=category_keys).order_by('?').first()
-    response_data = {
+    quote.views += 1
+    quote.save()
+    return JsonResponse(response_data_for(quote))
+
+def quote_sentiment_json(request, quote_id, sentiment):
+    quote = Quote.objects.get(id=quote_id)
+    if sentiment == 'like':
+        quote.likes += 1
+    elif sentiment == 'dislike':
+        quote.dislikes += 1
+    quote.save()
+    return JsonResponse(response_data_for(quote))
+
+def response_data_for(quote):
+    return {
         'quote': {
+            'id': quote.id,
             'title': quote.title,
             'subtitle': quote.subtitle,
             'content': quote.content,
+            'views': quote.views,
+            'likes': quote.likes,
+            'dislikes': quote.dislikes,
         },
         'category': {
             'name': quote.category.name
         }
     }
-    return JsonResponse(response_data)
 
 def about(request):
     template = loader.get_template('main/about.html')
