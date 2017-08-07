@@ -6,11 +6,18 @@
     {% autoescape off %}{{ quote.content }}{% endautoescape %}
 </div>
 {% if quote.category %}<p><b>{{ quote.category.name }}</b></p>{% endif %}
-<div id="quote_stats">
-    <div class="stat">Views: {{ quote.views }}</div>
-    <div class="stat">Likes: {{ quote.likes }}</div>
-    <div class="stat">Dislikes: {{ quote.dislikes }}</div>
+<div id="quote_stats" class="row">
+    <div class="stat col-md-2">Views <span class="badge">{{ quote.views }}</span></div>
+    <div class="stat col-md-2">Likes <span class="badge">{{ quote.likes }}</span></div>
+    <div class="stat col-md-2">Dislikes <span class="badge">{{ quote.dislikes }}</span></div>
 </div>
-<div id="quote_sentiments">
-    <i id="button_like" value="like" class="glyphicon glyphicon-thumbs-up"></i> <i id="button_dislike" value="dislike" class="glyphicon glyphicon-thumbs-down"></i>
+<div class="row"></div>
+<div id="quote_sentiments" class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-2">
+        <i id="button_like" value="like" class="btn btn-xs btn-default glyphicon glyphicon-thumbs-up"></i>
+    </div>
+    <div class="col-md-2">
+         <i id="button_dislike" value="dislike" class="btn btn-xs btn-default glyphicon glyphicon-thumbs-down"></i>
+    </div>
 </div>
