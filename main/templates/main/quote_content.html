@@ -1,18 +1,18 @@
 {% load bootstrap3 %}
 {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/main.css' %}"type="text/css" media="screen"/>
 {% if quote.title %}<h1>{{ quote.title }}</h1>{% endif %}
 {% if quote.subtitle %}<h2>{{ quote.subtitle }}</h2>{% endif %}
-<div id="quote_content" quote_id="{{ quote.id }}">
+<div id="quote_content" class="row" quote_id="{{ quote.id }}">
     {% autoescape off %}{{ quote.content }}{% endautoescape %}
 </div>
-{% if quote.category %}<p><b>{{ quote.category.name }}</b></p>{% endif %}
-<div id="quote_stats" class="row">
+{% if quote.category %}<div class="row"><b>{{ quote.category.name }}</b></div>{% endif %}
+<div id="quote_stats" class="row top20">
     <div class="stat col-md-2">Views <span class="badge">{{ quote.views }}</span></div>
     <div class="stat col-md-2">Likes <span class="badge">{{ quote.likes }}</span></div>
     <div class="stat col-md-2">Dislikes <span class="badge">{{ quote.dislikes }}</span></div>
 </div>
-<div class="row"></div>
-<div id="quote_sentiments" class="row">
+<div id="quote_sentiments" class="row top5">
     <div class="col-md-2"></div>
     <div class="col-md-2">
         <i id="button_like" value="like" class="btn btn-xs btn-default glyphicon glyphicon-thumbs-up"></i>
