@@ -3,17 +3,22 @@ import json
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 from django.template import loader
+from django.template.response import TemplateResponse
+from django.views import View
 from .models import Category, Quote
 from .forms import PreferencesForm
 
 
-def index(request):
-    return random_quote_ajax(request)
+class HomeView(View):
+    def dispatch(self, request, *args, **kwargs):
+        view = RandomQuoteAjaxView.as_view()
+        return view(request, *args, **kwargs)
 
-def random_quote_ajax(request):
-    template = loader.get_template('main/quote_ajax.html')
-    context = {}
-    return HttpResponse(template.render(context, request))
+
+class RandomQuoteAjaxView(View):
+    """Handle a request for a random quote. The response is ajax-enabled."""
+    def get(self, request):
+        return TemplateResponse(request, 'main/quote_ajax.html', {})
 
 def random_quote_json(request):
     category_keys = [int(pk) for pk, v in get_category_prefs(request).items() if v]
