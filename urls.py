@@ -8,7 +8,7 @@ import main.views
 urlpatterns = [
     url(r'^', include('django.contrib.auth.urls')),
     url(r'^$', main.views.HomeView.as_view(), name='index'),
-    url(r'^about$', main.views.about, name='about'),
+    url(r'^about$', main.views.AboutView.as_view(), name='about'),
     url(r'^main/', include('main.urls')),
     url(r'^admin/', admin.site.urls),
 ]

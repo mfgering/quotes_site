@@ -4,7 +4,8 @@ from .models import Category
 class PreferencesForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
-        category_prefs = kwargs.pop('category_prefs')
+        #category_prefs = kwargs.pop('category_prefs')
+        category_prefs = kwargs['initial']['category_prefs']
         super(PreferencesForm, self).__init__(*args, **kwargs)
         for category in Category.objects.order_by('name'):
             checkbox = forms.BooleanField(label=category.name, required=False)
