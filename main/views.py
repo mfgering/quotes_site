@@ -22,7 +22,7 @@ class RandomQuoteAjaxView(TemplateView):
 class RandomQuoteJsonView(View):
     """This is an ajax call for random quote data (to be returned as json)."""
     def get(self, request, *args, **kwargs):
-        category_keys = [int(pk) for pk, v in get_category_prefs(request).items() if v]
+        category_keys = [int(pk) for pk, v in PreferencesView.get_category_prefs(request).items() if v]
         quote = Quote.objects.filter(category_id__in=category_keys).order_by('?').first()
         quote.views += 1
         quote.save()
@@ -62,8 +62,10 @@ def response_data_for(request, quote):
         }
     }
 
+
 class AboutView(TemplateView):
     template_name = 'main/about.html'
+
 
 class PreferencesView(FormView):
     template_name = 'main/preferences.html'
@@ -71,7 +73,7 @@ class PreferencesView(FormView):
     success_url = '/'
 
     def get_initial(self):
-        prefs = self.get_category_prefs()
+        prefs = self.get_category_prefs(self.request)
         initial = super(PreferencesView, self).get_initial()
         initial['category_prefs'] = prefs
         return initial
@@ -81,9 +83,10 @@ class PreferencesView(FormView):
         self.set_category_prefs(response, form)
         return response
 
-    def get_category_prefs(self):
-        if 'category_prefs' in self.request.COOKIES:
-            prefs_json = self.request.COOKIES['category_prefs']
+    @staticmethod
+    def get_category_prefs(request):
+        if 'category_prefs' in request.COOKIES:
+            prefs_json = request.COOKIES['category_prefs']
             category_prefs = json.loads(prefs_json)
         else:
             category_prefs = dict()
@@ -91,7 +94,8 @@ class PreferencesView(FormView):
                 category_prefs[str(category.pk)] = True
         return category_prefs
 
-    def set_category_prefs(self, response, form):
+    @staticmethod
+    def set_category_prefs(response, form):
         category_prefs = dict()
         for field_name in form.fields:
             field = form.fields[field_name]
@@ -99,5 +103,3 @@ class PreferencesView(FormView):
                 category_prefs[str(field.category_pk)] = form.cleaned_data[field_name]
         response.set_cookie('category_prefs', json.dumps(category_prefs))
         return category_prefs
-
-
