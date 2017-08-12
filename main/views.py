@@ -1,9 +1,7 @@
 import json
 
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import redirect, render
+from django.http import JsonResponse
 from django.template import loader
-from django.template.response import TemplateResponse
 from django.views import View
 from django.views.generic import FormView, TemplateView
 from .models import Category, Quote
@@ -73,52 +71,33 @@ class PreferencesView(FormView):
     success_url = '/'
 
     def get_initial(self):
-        prefs = get_category_prefs(self.request)
+        prefs = self.get_category_prefs()
         initial = super(PreferencesView, self).get_initial()
         initial['category_prefs'] = prefs
         return initial
 
     def form_valid(self, form):
-        #TODO: Check how the template uses the 'form' context. Is it needed??
-        #TODO: superclass method to render??
-        response = render(self.request, 'main/preferences.html', {'form': form})
-        #TODO: Refactor the get/set category_prefs
-        set_category_prefs(response, form)
+        response = self.render_to_response(self.get_context_data())
+        self.set_category_prefs(response, form)
         return response
 
-#TODO: REMOVE THIS
-def preferences(request):
-    category_prefs = get_category_prefs(request)
-    if request.method == 'POST':
-        form = PreferencesForm(request.POST, category_prefs=category_prefs)
-        if form.is_valid():
-            response =  redirect('/')
-            set_category_prefs(response, form)
+    def get_category_prefs(self):
+        if 'category_prefs' in self.request.COOKIES:
+            prefs_json = self.request.COOKIES['category_prefs']
+            category_prefs = json.loads(prefs_json)
         else:
-            form = PreferencesForm(category_prefs=category_prefs)
-            response = render(request, 'main/preferences.html', {'form': form})
-    else:
-        form = PreferencesForm(category_prefs=category_prefs)
-        response = render(request, 'main/preferences.html', {'form': form})
-    return response
+            category_prefs = dict()
+            for category in Category.objects.order_by('name'):
+                category_prefs[str(category.pk)] = True
+        return category_prefs
 
-def get_category_prefs(request):
-    if 'category_prefs' in request.COOKIES:
-        prefs_json = request.COOKIES['category_prefs']
-        category_prefs = json.loads(prefs_json)
-    else:
+    def set_category_prefs(self, response, form):
         category_prefs = dict()
-        for category in Category.objects.order_by('name'):
-            category_prefs[str(category.pk)] = True
-    return category_prefs
-
-def set_category_prefs(response, form):
-    category_prefs = dict()
-    for field_name in form.fields:
-        field = form.fields[field_name]
-        if hasattr(field, 'category_pk'):
-            category_prefs[str(field.category_pk)] = form.cleaned_data[field_name]
-    response.set_cookie('category_prefs', json.dumps(category_prefs))
-    return category_prefs
+        for field_name in form.fields:
+            field = form.fields[field_name]
+            if hasattr(field, 'category_pk'):
+                category_prefs[str(field.category_pk)] = form.cleaned_data[field_name]
+        response.set_cookie('category_prefs', json.dumps(category_prefs))
+        return category_prefs
 
 
