@@ -5,9 +5,11 @@ from .models import Quote
 class QuoteTable(tables.Table):
     class Meta:
         model = Quote
+        attrs = {'class': 'table'}
 
+    @mark_safe
     def render_content(self, value=None):
-        return mark_safe(value)
+        return value
 
     def render_category(self, value=None):
         return value.name
