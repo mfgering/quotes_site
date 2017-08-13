@@ -3,9 +3,11 @@ import json
 from django.http import JsonResponse
 from django.template import loader
 from django.views import View
-from django.views.generic import FormView, TemplateView
+from django.views.generic import FormView, ListView, TemplateView
+from django_tables2 import SingleTableView
 from .models import Category, Quote
 from .forms import PreferencesForm
+from .tables import QuoteTable
 
 
 class HomeView(View):
@@ -62,6 +64,10 @@ def response_data_for(request, quote):
         }
     }
 
+
+class QuoteListView(SingleTableView):
+    model = Quote
+    table_class = QuoteTable
 
 class AboutView(TemplateView):
     template_name = 'main/about.html'
