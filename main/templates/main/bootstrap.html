@@ -43,6 +43,9 @@
                 <li {% if request.resolver_match.url_name == 'about' %}class="active"{% endif %}><a href="/about">About</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
+                <li {% if request.resolver_match.url_name == 'quotes' %}class="active"{% endif %}><a href="/main/quotes">All Quotes</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
                 <li {% if request.resolver_match.url_name == 'preferences' %}class="active"{% endif %}><a href="/main/preferences">Preferences</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->

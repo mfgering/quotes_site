@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^ajax/quote/$', views.RandomQuoteJsonView.as_view(), name='ajax_quote_json'),
     url(r'^ajax/sentiment/(\d+)/(.*)$', views.QuoteSentimentJsonView.as_view(), name='ajax_quote_sentiment'),
     url(r'^quote/$', views.RandomQuoteAjaxView.as_view(), name='ajax_quote'),
+    url(r'^quotes/$', views.QuoteListView.as_view(), name='quotes'),
 ]
