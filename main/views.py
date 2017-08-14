@@ -26,9 +26,11 @@ class RandomQuoteJsonView(View):
     def get(self, request, *args, **kwargs):
         category_keys = [int(pk) for pk, v in PreferencesView.get_category_prefs(request).items() if v]
         quote = Quote.objects.filter(category_id__in=category_keys).order_by('?').first()
-        quote.views += 1
-        quote.save()
-        return JsonResponse(response_data_for(request, quote))
+        if quote is not None:
+            quote.views += 1
+            quote.save()
+            return JsonResponse(response_data_for(request, quote))
+        return JsonResponse({'content': '<p>No quotes!</p>'})
 
 
 class QuoteSentimentJsonView(View):
