@@ -8,17 +8,17 @@
 </div>
 {% if quote.category %}<div class="row"><b>{{ quote.category.name }}</b></div>{% endif %}
 <div id="quote_stats" class="row top20">
-    <div class="stat col-md-2">Views <span class="badge">{{ quote.views }}</span></div>
-    <div class="stat col-md-2">Likes <span class="badge">{{ quote.likes }}</span></div>
-    <div class="stat col-md-2">Dislikes <span class="badge">{{ quote.dislikes }}</span></div>
+    <div class="stat col-xs-4 col-md-2">Views <span class="badge">{{ quote.views }}</span></div>
+    <div class="stat col-xs-4 stat col-md-2">Likes <span class="badge">{{ quote.likes }}</span></div>
+    <div class="stat col-xs-4 stat col-md-2">Dislikes <span class="badge">{{ quote.dislikes }}</span></div>
 </div>
 {# TODO: Use bootstrap flexbox styling #}
 <div id="quote_sentiments" class="row top5">
-    <div class="col-md-2"></div>
-    <div class="col-md-2">
+    <div class="stat col-xs-4 col-md-2"></div>
+    <div class="stat col-xs-4 col-md-2">
         <i id="button_like" value="like" class="btn btn-xs btn-default glyphicon glyphicon-thumbs-up"></i>
     </div>
-    <div class="col-md-2">
+    <div class="stat col-xs-4 col-md-2">
          <i id="button_dislike" value="dislike" class="btn btn-xs btn-default glyphicon glyphicon-thumbs-down"></i>
     </div>
 </div>
