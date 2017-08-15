@@ -9,5 +9,8 @@
 {% endblock %}
 
 {% block bootstrap3_extra_head %}
+    {% if quote_id %}
+        <script type="application/javascript">document.quote_id = {{ quote_id  }};</script>
+    {% endif %}
     <script src="{% static "main/js/quote.js" %}"></script>
 {% endblock %}

@@ -37,7 +37,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li {% if request.resolver_match.url_name == 'index' %}class="active"{% endif %}><a href="/">Refresh <span class="sr-only">(current)</span></a></li>
+                <li {% if request.resolver_match.url_name == 'index' %}class="active"{% endif %}><a id="refresh_button" href="#">Refresh <span class="sr-only">(current)</span></a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li {% if request.resolver_match.url_name == 'about' %}class="active"{% endif %}><a href="/about">About</a></li>

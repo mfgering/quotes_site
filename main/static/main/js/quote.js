@@ -1,10 +1,11 @@
 
 jQuery(document).ready(function($){
+    $('#refresh_button').click(function(){
+        get_quote()});
     get_quote();
 });
 
 function get_quote() {
-    console.log('get quote');
     set_for_loading();
     quote_from_server();
 }
@@ -15,8 +16,13 @@ function set_for_loading() {
 }
 
 function quote_from_server() {
+    var url = "/main/ajax/quote";
+    if(typeof document.quote_id !== 'undefined') {
+        url += '/'+document.quote_id+'/';
+        delete document.quote_id;
+    }
     $.ajax({
-        url:"/main/ajax/quote",
+        url:url,
         type:"GET",
         success:function(response) {
             quote_to_doc(response);

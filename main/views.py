@@ -12,20 +12,29 @@ from .tables import QuoteTable
 
 class HomeView(View):
     def dispatch(self, request, *args, **kwargs):
-        view = RandomQuoteAjaxView.as_view()
+        view = QuoteAjaxView.as_view()
         return view(request, *args, **kwargs)
 
 
-class RandomQuoteAjaxView(TemplateView):
+class QuoteAjaxView(TemplateView):
     """Handle a request for a random quote. The response is ajax-enabled."""
     template_name = 'main/quote_ajax.html'
 
-
-class RandomQuoteJsonView(View):
-    """This is an ajax call for random quote data (to be returned as json)."""
     def get(self, request, *args, **kwargs):
-        category_keys = [int(pk) for pk, v in PreferencesView.get_category_prefs(request).items() if v]
-        quote = Quote.objects.filter(category_id__in=category_keys).order_by('?').first()
+        context = self.get_context_data(**kwargs)
+        return self.render_to_response(context)
+
+
+class QuoteJsonView(View):
+    """This is an ajax call for quote data (to be returned as json). If quote_id is specified,
+    return that quote. Otherwise, return a random quote.
+    """
+    def get(self, request, *args, **kwargs):
+        if kwargs['quote_id']:
+            quote = Quote.objects.get(id=kwargs['quote_id'])
+        else:
+            category_keys = [int(pk) for pk, v in PreferencesView.get_category_prefs(request).items() if v]
+            quote = Quote.objects.filter(category_id__in=category_keys).order_by('?').first()
         if quote is not None:
             quote.views += 1
             quote.save()
@@ -36,7 +45,8 @@ class RandomQuoteJsonView(View):
 class QuoteSentimentJsonView(View):
     """This is an ajax call for setting the sentiment of a quote."""
     def get(self, request, *args, **kwargs):
-        (quote_id, sentiment) = self.args
+        quote_id = int(kwargs['quote_id'])
+        sentiment = kwargs['sentiment']
         quote = Quote.objects.get(id=quote_id)
         if sentiment == 'like':
             quote.likes += 1
