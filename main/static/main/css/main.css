@@ -1,2 +1,7 @@
 .top5 {margin-top: 5px;}
 .top20 {margin-top: 20px;}
+
+.quote_title,.quote_subtitle,.quote_content,.quote_category {
+    margin-left: 10px;
+    margin-right: 10px;
+}
