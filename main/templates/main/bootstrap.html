@@ -44,6 +44,15 @@
               <ul class="nav navbar-nav navbar-right">
                 <li {% if request.resolver_match.url_name == 'about' %}class="active"{% endif %}><a href="/about">About</a></li>
               </ul>
+              {% if user.is_authenticated %}
+                  <ul class="nav navbar-nav navbar-right">
+                    <li {% if request.resolver_match.url_name == 'logout' %}class="active"{% endif %}><a href="/logout">Logout</a></li>
+                  </ul>
+              {% else %}
+                  <ul class="nav navbar-nav navbar-right">
+                    <li {% if request.resolver_match.url_name == 'login' %}class="active"{% endif %}><a href="/login">Login</a></li>
+                  </ul>
+              {% endif %}
               <ul class="nav navbar-nav navbar-right">
                 <li {% if request.resolver_match.url_name == 'preferences' %}class="active"{% endif %}><a href="/preferences">Settings</a></li>
               </ul>
