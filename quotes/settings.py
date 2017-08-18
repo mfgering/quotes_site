@@ -32,6 +32,7 @@ INTERNAL_IPS = ['127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'main', # Note: Put main ahead of django.contrib.admin so that its templates override admin's
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +43,6 @@ INSTALLED_APPS = [
     'django_extensions',
     'bootstrap3',
     'ckeditor',
-    'main',
     'bootstrap_themes',
     'django_tables2',
     'debug_toolbar',
@@ -147,6 +147,8 @@ BOOTSTRAP3 = {
     'required_css_class': 'bootstrap3-required',
     'javascript_in_head': True,
 }
+
+LOGIN_REDIRECT_URL = '/'
 
 try:
     LOCAL_SETTINGS
