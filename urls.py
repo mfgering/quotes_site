@@ -7,6 +7,7 @@ import main.views
 
 urlpatterns = [
     url(r'^', include('django.contrib.auth.urls')),
+    # Note: Add the urls from the main app without prefixing the app name.
     url(r'^$', main.views.HomeView.as_view(), name='index'),
     url(r'^', include('main.urls')),
     url(r'^admin/', admin.site.urls),
