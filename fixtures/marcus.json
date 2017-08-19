@@ -267,7 +267,7 @@
 {
   "model": "main.quote",
   "fields": {
-    "content": "<p>Variant translation: Nowhere can man find a quieter or more untroubled retreat than in his own soul.</p>",
+    "content": "<p>Nowhere can man find a quieter or more untroubled retreat than in his own soul.</p>",
     "category": ["Marcus Aurelius"]
   }
 },
@@ -484,7 +484,7 @@
 {
   "model": "main.quote",
   "fields": {
-    "content": "<p>At dawn of day, when you dislike being called, have this thought ready: I am called to man's labour; why then do I make a difficulty if I am going out to do what I was born to do and what I was brought into the world for?(Farquharson translation)</p>",
+    "content": "<p>At dawn of day, when you dislike being called, have this thought ready: I am called to man's labour; why then do I make a difficulty if I am going out to do what I was born to do and what I was brought into the world for?</p>",
     "category": ["Marcus Aurelius"]
   }
 },
@@ -680,7 +680,7 @@
 {
   "model": "main.quote",
   "fields": {
-    "content": "<p>Variant translation: If someone is able to show me that what I think or do is not right, I will happily change, for I seek the truth, by which no one ever was truly harmed. Harmed is the person who continues in his self-deception and ignorance.</p>",
+    "content": "<p>If someone is able to show me that what I think or do is not right, I will happily change, for I seek the truth, by which no one ever was truly harmed. Harmed is the person who continues in his self-deception and ignorance.</p>",
     "category": ["Marcus Aurelius"]
   }
 },
@@ -827,7 +827,7 @@
 {
   "model": "main.quote",
   "fields": {
-    "content": "<p>Variant Translation: Let not thy mind run on what thou lackest as much as on what thou hast already.</p>",
+    "content": "<p>Let not thy mind run on what thou lackest as much as on what thou hast already.</p>",
     "category": ["Marcus Aurelius"]
   }
 },
@@ -1479,7 +1479,7 @@
 {
   "model": "main.quote",
   "fields": {
-    "content": "<p>Alternate Translation: Whatever may befall you, it was preordained for you from everlasting.</p>",
+    "content": "<p>Whatever may befall you, it was preordained for you from everlasting.</p>",
     "category": ["Marcus Aurelius"]
   }
 },

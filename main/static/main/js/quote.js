@@ -16,7 +16,7 @@ function set_for_loading() {
 }
 
 function quote_from_server() {
-    var url = "/main/ajax/quote";
+    var url = "/ajax/quote";
     if(typeof document.quote_id !== 'undefined') {
         url += '/'+document.quote_id+'/';
         delete document.quote_id;
@@ -39,7 +39,7 @@ function quote_to_doc(response) {
     $('#button_like,#button_dislike').click(function(e){
         e.preventDefault();
         $.ajax({
-            url:"/main/ajax/sentiment/"+$('#quote_content').attr('quote_id')+'/'+$(this).attr('value'),
+            url:"/ajax/sentiment/"+$('#quote_content').attr('quote_id')+'/'+$(this).attr('value'),
             type:"GET",
             success:function(response) {
                 quote_to_doc(response);
