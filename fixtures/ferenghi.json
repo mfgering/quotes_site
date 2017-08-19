@@ -1870,7 +1870,7 @@
 {
   "model": "main.quote",
   "fields": {
-    "content": "<p>a) When in doubt, lie. When in doubt, buy. When in doubt, demand more money. When in doubt, shoot them, take their money, run and blame someone else.</p>",
+    "content": "<p>When in doubt, lie. When in doubt, buy. When in doubt, demand more money. When in doubt, shoot them, take their money, run and blame someone else.</p>",
     "category": ["Ferengi Rules of Acquisition"]
   }
 },
