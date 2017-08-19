@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import include, url
 
 from . import views
 
@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^ajax/sentiment/(?P<quote_id>\d+)/(?P<sentiment>.*)$', views.QuoteSentimentJsonView.as_view(), name='ajax_quote_sentiment'),
     url(r'^quote/((?P<quote_id>\d+)?/)?$', views.QuoteAjaxView.as_view(), name='ajax_quote'),
     url(r'^quotes/$', views.QuoteListView.as_view(), name='quotes'),
+    url(r'^contact/$', include('contact_form.urls'), name='contact'),
 ]
