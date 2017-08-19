@@ -48,6 +48,11 @@
                   <ul class="nav navbar-nav navbar-right">
                     <li {% if request.resolver_match.url_name == 'logout' %}class="active"{% endif %}><a href="/logout">Logout</a></li>
                   </ul>
+                  {% if user.is_staff %}
+                      <ul class="nav navbar-nav navbar-right">
+                        <li {% if request.resolver_match.url_name == 'admin' %}class="active"{% endif %}><a href="/admin">Admin</a></li>
+                      </ul>
+                  {% endif %}
               {% else %}
                   <ul class="nav navbar-nav navbar-right">
                     <li {% if request.resolver_match.url_name == 'login' %}class="active"{% endif %}><a href="/login">Login</a></li>
