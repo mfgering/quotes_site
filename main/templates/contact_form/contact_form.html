@@ -9,7 +9,7 @@
 {% endif %}
 
 <form method="post" action="{% url 'contact_form' %}" class="form-horizontal">
-{% csrf_token %}
+    {% csrf_token %}
     <div class="form-group">
         <label for="id_name" class="control-label col-sm-2">{{ form.name.label }}:</label>
         <div class="controls col-sm-10">
@@ -28,7 +28,7 @@
             {{ form.body|add_class:"form-control col-sm-10" }}
         </div>
     </div>
-<input type="submit" value="Send" class="btn btn-primary btn-lg sm-col-12" />
+    <input type="submit" value="Send" class="btn btn-primary btn-lg sm-col-12" />
 </form>
 
 {% endblock %}
