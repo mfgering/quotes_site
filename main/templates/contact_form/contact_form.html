@@ -16,7 +16,7 @@
     {% endif %}
 {% endif %}
 
-<form method="post" action="{% url 'contact' %}">
+<form method="post" action="{% url 'contact_form' %}">
 {% csrf_token %}
 <table>
 <tr>
@@ -27,10 +27,13 @@
     <td>{{ form.email.label_tag }}</td>
     <td>{{ form.email }}</td>
 </tr>
+<tr>
+    <td>{{ form.body.label_tag }}</td>
+    <td>{{ form.body }}</td>
+</tr>
 </table>
 
-<input type="submit" value="contact" />
-<input type="hidden" name="next" value="{{ next }}" />
+<input type="submit" value="Send" />
 </form>
 
 {% endblock %}

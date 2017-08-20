@@ -83,6 +83,8 @@ WSGI_APPLICATION = 'quotes.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+# NOTE: Do not use sqlite in production because the web server probably doesn't have write access
+# to the db.sqlite3 file, nor should it.
 
 DATABASES = {
     'default': {
@@ -150,6 +152,7 @@ BOOTSTRAP3 = {
 
 LOGIN_REDIRECT_URL = '/'
 
+# Override/augment settings from a local_settings module. This is known as the Golding method.
 try:
     LOCAL_SETTINGS
 except NameError:

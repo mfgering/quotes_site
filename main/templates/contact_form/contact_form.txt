@@ -1,0 +1,4 @@
+A contact message was sent from {{ name }},
+{{ email }}:
+
+{{ body }}
