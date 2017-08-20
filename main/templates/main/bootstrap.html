@@ -42,27 +42,30 @@
                 <li {% if request.resolver_match.url_name == 'index' %}class="active"{% endif %}><a id="refresh_button" href="#">Again <span class="sr-only">(current)</span></a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li {% if request.resolver_match.url_name == 'about' %}class="active"{% endif %}><a href="/about">About</a></li>
+                <li {% if request.resolver_match.url_name == 'about' %}class="active"{% endif %}><a href="{% url 'about' %}">About</a></li>
               </ul>
               {% if user.is_authenticated %}
                   <ul class="nav navbar-nav navbar-right">
-                    <li {% if request.resolver_match.url_name == 'logout' %}class="active"{% endif %}><a href="/logout">Logout</a></li>
+                    <li {% if request.resolver_match.url_name == 'logout' %}class="active"{% endif %}><a href="{% url 'logout' %}">Logout</a></li>
                   </ul>
                   {% if user.is_staff %}
                       <ul class="nav navbar-nav navbar-right">
-                        <li {% if request.resolver_match.url_name == 'admin' %}class="active"{% endif %}><a href="/admin">Admin</a></li>
+                        <li {% if request.resolver_match.url_name == 'admin' %}class="active"{% endif %}><a href="{% url 'admin' %}">Admin</a></li>
                       </ul>
                   {% endif %}
               {% else %}
                   <ul class="nav navbar-nav navbar-right">
-                    <li {% if request.resolver_match.url_name == 'login' %}class="active"{% endif %}><a href="/login">Login</a></li>
+                    <li {% if request.resolver_match.url_name == 'login' %}class="active"{% endif %}><a href="{% url 'login' %}">Login</a></li>
                   </ul>
               {% endif %}
               <ul class="nav navbar-nav navbar-right">
-                <li {% if request.resolver_match.url_name == 'preferences' %}class="active"{% endif %}><a href="/preferences">Settings</a></li>
+                <li {% if request.resolver_match.url_name == 'contact_form' %}class="active"{% endif %}><a href="{% url 'contact_form' %}">Contact Us</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li {% if request.resolver_match.url_name == 'preferences' %}class="active"{% endif %}><a href="{% url 'preferences' %}">Settings</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right hidden-xs">
-                <li {% if request.resolver_match.url_name == 'quotes' %}class="active"{% endif %}><a href="/quotes">All Quotes</a></li>
+                <li {% if request.resolver_match.url_name == 'quotes' %}class="active"{% endif %}><a href="{% url 'quotes' %}">All Quotes</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
