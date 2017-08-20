@@ -9,6 +9,7 @@ django-tables2
 mysqlclient
 django-contact-form
 django-widget-tweaks
+django-recaptcha2
 
 # Debugging
 django-debug-toolbar

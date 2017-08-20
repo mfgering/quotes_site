@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django_tables2',
     'widget_tweaks',
     'debug_toolbar',
+    'snowpenguin.django.recaptcha2',
 ]
 
 MIDDLEWARE = [

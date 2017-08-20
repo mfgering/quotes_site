@@ -1,5 +1,6 @@
 import json
 
+from django.conf import settings
 from django.http import JsonResponse
 from django.template import loader
 from django.views import View
@@ -125,3 +126,6 @@ class PreferencesView(FormView):
 
 class QuotesContactFormView(ContactFormView):
     form_class = QuotesContactForm
+
+    def get_captcha_public_key(self):
+        return settings.RECAPTCHA_PUBLIC_KEY
