@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'bootstrap_themes',
     'django_tables2',
+    'widget_tweaks',
     'debug_toolbar',
 ]
 

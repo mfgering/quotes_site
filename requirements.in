@@ -8,6 +8,7 @@ whitenoise
 django-tables2
 mysqlclient
 django-contact-form
+django-widget-tweaks
 
 # Debugging
 django-debug-toolbar
