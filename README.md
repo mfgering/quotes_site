@@ -98,5 +98,42 @@ Installed 267 object(s) from 1 fixture(s)
 $ python manage.py loaddata fixtures/ferenghi.json
 Installed 287 object(s) from 1 fixture(s)
 
+
 ```
 
+### Deploying to Apache/mod_wsgi
+
+If your server uses Apache for web content, you can deploy the django app with
+the *mod_wsgi* Apache module.
+
+If your server is cPanel based, you will need to create a custom configuration
+file and put it in */usr/local/apache/conf/userdata/ssl/\<apache-version>/\<user>/\<domain>*
+or */usr/local/apache/conf/userdata/std/\<apache-version>/\<user>/\<domain>*
+
+Here is an example configuration file in */usr/local/apache/conf/userdata/ssl/2_4/klezy/quotes.klezy.xyz*:
+
+```
+Alias /static /home/klezy/quote.klezy.xyz/_static
+<Directory /home/klezy/quote.klezy.xyz/_static>
+	Require all granted
+</Directory>
+
+<Directory /home/klezy/quote.klezy.xyz>
+	<Files wsgi.py>
+		Require all granted
+	</Files>
+</Directory>
+
+LogLevel info
+
+WSGIDaemonProcess quote python-home=/home/klezy/.virtualenvs/quote python-path=/home/klezy/quote.klezy.xyz
+WSGIProcessGroup quote
+WSGIScriptAlias / /home/klezy/quote.klezy.xyz/quotes/wsgi.py process-group=quote application-group=%{GLOBAL}
+
+```
+
+For a cPanel server, you will need to rebuild the httpd.conf file:
+
+```shell
+$ /scripts/rebuildhttpdconf
+```
