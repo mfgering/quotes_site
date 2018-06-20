@@ -162,13 +162,6 @@
 {
   "model": "main.quote",
   "fields": {
-    "content": "<p>What means all this?</p>",
-    "category": ["Marcus Aurelius"]
-  }
-},
-{
-  "model": "main.quote",
-  "fields": {
     "content": "<p>Waste not the remnant of thy life in those imaginations touching other folk, whereby thou contributest not to the common weal.</p>",
     "category": ["Marcus Aurelius"]
   }
@@ -807,13 +800,6 @@
   "model": "main.quote",
   "fields": {
     "content": "<p>Nature which governs the whole will soon change all things which thou seest, and out of there substance will make other things, and again other things from the substance of them, in order that the world may ever be new.</p>",
-    "category": ["Marcus Aurelius"]
-  }
-},
-{
-  "model": "main.quote",
-  "fields": {
-    "content": "<p>VII, 25 (See also Charles Darwin)</p>",
     "category": ["Marcus Aurelius"]
   }
 },
@@ -1780,21 +1766,7 @@
 {
   "model": "main.quote",
   "fields": {
-    "content": "<p><i>Meditations. ii. 7.</i></p>",
-    "category": ["Marcus Aurelius"]
-  }
-},
-{
-  "model": "main.quote",
-  "fields": {
     "content": "<p>Be not as one that hath ten thousand years to live; death is nigh at hand: while thou livest, while thou hast time, be good.</p>",
-    "category": ["Marcus Aurelius"]
-  }
-},
-{
-  "model": "main.quote",
-  "fields": {
-    "content": "<p><i>Meditations. iv. 17.</i></p>",
     "category": ["Marcus Aurelius"]
   }
 },
@@ -1808,21 +1780,7 @@
 {
   "model": "main.quote",
   "fields": {
-    "content": "<p><i>Meditations. v. 1.</i></p>",
-    "category": ["Marcus Aurelius"]
-  }
-},
-{
-  "model": "main.quote",
-  "fields": {
     "content": "<p>No form of Nature is inferior to Art; for the arts merely imitate natural forms.</p>",
-    "category": ["Marcus Aurelius"]
-  }
-},
-{
-  "model": "main.quote",
-  "fields": {
-    "content": "<p><i>Meditations. xi. 10.</i></p>",
     "category": ["Marcus Aurelius"]
   }
 },
