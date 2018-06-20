@@ -84,6 +84,17 @@ Superuser created successfully.
 
 ```
 
+#### Copy Glyphicon Files
+
+```shell
+$ cp -R _static/bootstrap/fonts _static/bootstrap/themes/default
+```
+
+#### Collect Static Files
+```shell
+$ python manage.py collectstatic
+```
+
 #### Load Fixtures
 
 You can start with predefined categories and quotes:
