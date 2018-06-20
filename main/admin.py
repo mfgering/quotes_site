@@ -8,7 +8,7 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 
 class QuoteAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title']
-    search_fields = ['title']
+    list_display = ['id', 'title', 'content']
+    search_fields = ['title', 'content']
 admin.site.register(Quote, QuoteAdmin)
 
