@@ -38,6 +38,7 @@ function quote_to_doc(response) {
     $('#quote_wrapper').empty().append(content);
     $('#button_like,#button_dislike').click(function(e){
         e.preventDefault();
+        $('#quote_sentiments').hide();
         $.ajax({
             url:"/ajax/sentiment/"+$('#quote_content').attr('quote_id')+'/'+$(this).attr('value'),
             type:"GET",
