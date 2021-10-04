@@ -32,7 +32,7 @@ class QuoteJsonView(View):
     return that quote. Otherwise, return a random quote.
     """
     def get(self, request, *args, **kwargs):
-        if kwargs['quote_id']:
+        if 'quote_id' in kwargs:
             quote = Quote.objects.get(id=kwargs['quote_id'])
         else:
             category_keys = [int(pk) for pk, v in PreferencesView.get_category_prefs(request).items() if v]

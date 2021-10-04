@@ -154,6 +154,8 @@ BOOTSTRAP3 = {
 
 LOGIN_REDIRECT_URL = '/'
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 # Override/augment settings from a local_settings module. This is known as the Golding method.
 try:
     LOCAL_SETTINGS
