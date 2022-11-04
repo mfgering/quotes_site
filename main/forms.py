@@ -1,7 +1,4 @@
 from django import forms
-from contact_form.forms import ContactForm
-from snowpenguin.django.recaptcha2.fields import ReCaptchaField
-from snowpenguin.django.recaptcha2.widgets import ReCaptchaWidget
 from .models import Category
 
 class PreferencesForm(forms.Form):
@@ -18,7 +15,3 @@ class PreferencesForm(forms.Form):
             else:
                 checkbox.initial = True
             self.fields['category_%s' % category.pk] = checkbox
-
-class QuotesContactForm(ContactForm):
-
-    captcha = ReCaptchaField(widget=ReCaptchaWidget())

@@ -59,9 +59,6 @@
                   </ul>
               {% endif %}
               <ul class="nav navbar-nav navbar-right">
-                <li {% if request.resolver_match.url_name == 'contact_form' %}class="active"{% endif %}><a href="{% url 'contact_form' %}">Contact Us</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
                 <li {% if request.resolver_match.url_name == 'preferences' %}class="active"{% endif %}><a href="{% url 'preferences' %}">Settings</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right hidden-xs">
