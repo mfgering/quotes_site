@@ -305,8 +305,8 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (3, 'auth', 'permission'),
 (2, 'auth', 'user'),
 (5, 'contenttypes', 'contenttype'),
-(7, 'main', 'category'),
-(8, 'main', 'quote'),
+(7, 'quotes', 'category'),
+(8, 'quotes', 'quote'),
 (6, 'sessions', 'session');
 
 -- --------------------------------------------------------
@@ -339,11 +339,11 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (10, 'auth', '0006_require_contenttypes_0002', '2017-08-15 17:15:28.623874'),
 (11, 'auth', '0007_alter_validators_add_error_messages', '2017-08-15 17:15:28.633675'),
 (12, 'auth', '0008_alter_user_username_max_length', '2017-08-15 17:15:28.652197'),
-(13, 'main', '0001_initial', '2017-08-15 17:15:28.677033'),
-(14, 'main', '0002_auto_20170623_1728', '2017-08-15 17:15:28.695294'),
-(15, 'main', '0003_auto_20170726_1933', '2017-08-15 17:15:28.712555'),
-(16, 'main', '0004_auto_20170727_1924', '2017-08-15 17:15:28.722073'),
-(17, 'main', '0005_auto_20170806_0842', '2017-08-15 17:15:28.761187'),
+(13, 'quotes', '0001_initial', '2017-08-15 17:15:28.677033'),
+(14, 'quotes', '0002_auto_20170623_1728', '2017-08-15 17:15:28.695294'),
+(15, 'quotes', '0003_auto_20170726_1933', '2017-08-15 17:15:28.712555'),
+(16, 'quotes', '0004_auto_20170727_1924', '2017-08-15 17:15:28.722073'),
+(17, 'quotes', '0005_auto_20170806_0842', '2017-08-15 17:15:28.761187'),
 (18, 'sessions', '0001_initial', '2017-08-15 17:15:28.772973'),
 (19, 'admin', '0003_logentry_add_action_flag_choices', '2019-04-06 12:24:51.219785'),
 (20, 'auth', '0009_alter_user_last_name_max_length', '2019-04-06 12:24:51.262690'),
@@ -377,29 +377,29 @@ INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `main_category`
+-- Table structure for table `quotes_category`
 --
 
-CREATE TABLE `main_category` (
+CREATE TABLE `quotes_category` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `main_category`
+-- Dumping data for table `quotes_category`
 --
 
-INSERT INTO `main_category` (`id`, `name`) VALUES
+INSERT INTO `quotes_category` (`id`, `name`) VALUES
 (2, 'Ferengi Rules of Acquisition'),
 (1, 'Marcus Aurelius');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `main_quote`
+-- Table structure for table `quotes_quote`
 --
 
-CREATE TABLE `main_quote` (
+CREATE TABLE `quotes_quote` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `content` longtext NOT NULL,
@@ -411,10 +411,10 @@ CREATE TABLE `main_quote` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `main_quote`
+-- Dumping data for table `quotes_quote`
 --
 
-INSERT INTO `main_quote` (`id`, `title`, `content`, `category_id`, `subtitle`, `dislikes`, `likes`, `views`) VALUES
+INSERT INTO `quotes_quote` (`id`, `title`, `content`, `category_id`, `subtitle`, `dislikes`, `likes`, `views`) VALUES
 (1, '', '<p>When you wake up in the morning, tell yourself: The people I deal with today will be meddling, ungrateful, arrogant, dishonest, jealous, and surly. They are like this because they can\'t tell good from evil.</p>', 1, NULL, 0, 5, 6),
 (2, '', '<p>Say to yourself in the early morning: I shall meet today inquisitive, ungrateful, violent, treacherous, envious, uncharitable men. All these things have come upon them through ignorance of real good and ill.</p>', 1, NULL, 0, 8, 8),
 (3, '', '<p>We are all made for mutual assistance, as the feet, the hands, and the eyelids, as the rows of the upper and under teeth, from whence it follows that clashing and opposition is perfectly unnatural.</p>', 1, NULL, 0, 5, 5),
@@ -629,7 +629,7 @@ INSERT INTO `main_quote` (`id`, `title`, `content`, `category_id`, `subtitle`, `
 (236, '', '<p>And finally remember that nothing harms him who is really a citizen, which does not harm the state; nor yet does anything harm the state which does not harm law [order]; and of these things which are called misfortunes not one harms law. What then does not harm law does not harm either state or citizen.</p>', 1, NULL, 0, 0, 3),
 (237, '', '<p>\"Leaves, some the wind scatters on the ground—So is the race of man.\" Leaves, also, are thy children; and leaves, too, are they who cry out so if they are worthy of credit, or bestow their praise, or on the contrary curse, or secretly blame and sneer; and leaves, in like manner, are those who shall receive and transmit a man\'s fame to after-times. For all such things as these \"are produced in the season of spring,\" as the poet says; then the wind casts them down; then the forest produces other leaves in their places. But a brief existence is common to all things, and yet thou avoidest and pursuest all things as if they would be eternal.</p>', 1, NULL, 1, 2, 4),
 (238, '', '<p>A little time, and thou shalt close thy eyes; and him who has attended thee to thy grave, another soon will lament.</p>', 1, NULL, 0, 5, 7);
-INSERT INTO `main_quote` (`id`, `title`, `content`, `category_id`, `subtitle`, `dislikes`, `likes`, `views`) VALUES
+INSERT INTO `quotes_quote` (`id`, `title`, `content`, `category_id`, `subtitle`, `dislikes`, `likes`, `views`) VALUES
 (239, '', '<p>The healthy eye ought to see all visible things and not to say, I wish for green things; for this is the condition of the diseased eye. And the healthy hearing and smelling ought to be ready to perceive all that can be heard and smelled. And the healthy stomach ought to be with respect to all food just as the mill with respect to all things which it is formed to grind. And accordingly the healthy understanding ought to be prepared for everything which happens; but that which says, Let my dear children live, and let all men praise whatever I may do, is an eye which seeks for green things, or teeth which seek for soft things.</p>', 1, NULL, 0, 3, 5),
 (240, '', '<p>There is no man so fortunate that there shall not be by him when he is dying some who are pleased with what is going to happen. Suppose that he was a good and a wise man, will there not be at least some one to say to himself, Let us at last breathe freely, being relieved from this schoolmaster? It is true that he was harsh to none of us, but I perceive that he tacitly condemns us.—This is what is said of a good man. But in our own case how many other things are there for which there are many who wish to get rid of us.</p>', 1, NULL, 0, 9, 9),
 (241, '', '<p>Remember that what pulls the strings is the force hidden within; there lies the power to persuade, there the life,—there, if one must speak out, the real man.</p>', 1, NULL, 0, 6, 8),
@@ -936,18 +936,18 @@ ALTER TABLE `django_session`
   ADD KEY `django_session_expire_date_a5c62663` (`expire_date`);
 
 --
--- Indexes for table `main_category`
+-- Indexes for table `quotes_category`
 --
-ALTER TABLE `main_category`
+ALTER TABLE `quotes_category`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `main_category_name_eb0f0831_uniq` (`name`);
+  ADD UNIQUE KEY `quotes_category_name_eb0f0831_uniq` (`name`);
 
 --
--- Indexes for table `main_quote`
+-- Indexes for table `quotes_quote`
 --
-ALTER TABLE `main_quote`
+ALTER TABLE `quotes_quote`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `main_quote_category_id_8c967c7c_fk_main_category_id` (`category_id`);
+  ADD KEY `quotes_quote_category_id_8c967c7c_fk_quotes_category_id` (`category_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -1008,15 +1008,15 @@ ALTER TABLE `django_migrations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `main_category`
+-- AUTO_INCREMENT for table `quotes_category`
 --
-ALTER TABLE `main_category`
+ALTER TABLE `quotes_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `main_quote`
+-- AUTO_INCREMENT for table `quotes_quote`
 --
-ALTER TABLE `main_quote`
+ALTER TABLE `quotes_quote`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=555;
 
 --
@@ -1058,10 +1058,10 @@ ALTER TABLE `django_admin_log`
   ADD CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Constraints for table `main_quote`
+-- Constraints for table `quotes_quote`
 --
-ALTER TABLE `main_quote`
-  ADD CONSTRAINT `main_quote_category_id_8c967c7c_fk_main_category_id` FOREIGN KEY (`category_id`) REFERENCES `main_category` (`id`);
+ALTER TABLE `quotes_quote`
+  ADD CONSTRAINT `quotes_quote_category_id_8c967c7c_fk_quotes_category_id` FOREIGN KEY (`category_id`) REFERENCES `quotes_category` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

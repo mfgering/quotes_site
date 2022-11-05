@@ -1,0 +1,16 @@
+{% extends 'quotes/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title %}{{ quote.title|title }}{% endblock %}
+
+{% block content %}
+    <div id="quote_wrapper"></div>
+{% endblock %}
+
+{% block bootstrap3_extra_head %}
+    {% if quote_id %}
+        <script type="application/javascript">document.quote_id = {{ quote_id  }};</script>
+    {% endif %}
+    <script src="{% static "quotes/js/quote.js" %}"></script>
+{% endblock %}

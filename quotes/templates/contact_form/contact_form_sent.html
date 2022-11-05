@@ -1,0 +1,12 @@
+{% extends "quotes/base.html" %}
+
+{% block title %}{% endblock %}
+{% block content %}
+
+    {% if form.errors %}
+    <p>Problem!</p>
+    {% endif %}
+
+    <p>Message sent. Thanks!</p>
+{% endblock content %}
+

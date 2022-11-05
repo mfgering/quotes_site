@@ -32,7 +32,7 @@ INTERNAL_IPS = ['127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'main', # Note: Put main ahead of django.contrib.admin so that its templates override admin's
+    'quotes', # Note: Put quotes ahead of django.contrib.admin so that its templates override admin's
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -141,7 +141,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "_static")
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "main", "static"),
+    os.path.join(BASE_DIR, "quotes", "static"),
 ]
 
 # Settings for django-bootstrap3

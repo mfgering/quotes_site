@@ -1,20 +1,19 @@
-"""quotes URL Configuration
+from django.conf.urls import include
+from django.urls import re_path
+from django.views.generic import TemplateView
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.11/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.conf.urls import url, include
-    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
-"""
-from django.conf.urls import url
-from django.contrib import admin
+from . import views
 
 urlpatterns = [
+    re_path(r'^$', views.HomeView.as_view(), name='index'),
+    re_path(r'about/', views.AboutView.as_view(), name='about'),
+    re_path(r'^preferences/$', views.PreferencesView.as_view(), name='preferences'),
+    re_path(r'^ajax/quote/((?P<quote_id>\d+)?/)?$', views.QuoteJsonView.as_view(), name='ajax_quote_json'),
+    re_path(r'^ajax/sentiment/(?P<quote_id>\d+)/(?P<sentiment>.*)$', views.QuoteSentimentJsonView.as_view(), name='ajax_quote_sentiment'),
+    re_path(r'^quote/((?P<quote_id>\d+)?/)?$', views.QuoteAjaxView.as_view(), name='ajax_quote'),
+    re_path(r'^quotes/$', views.QuoteListView.as_view(), name='quotes'),
+    re_path(r'^contact/sent/$',
+        TemplateView.as_view(
+            template_name='contact_form/contact_form_sent.html'),
+        name='contact_form_sent'),
 ]
