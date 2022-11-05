@@ -6,10 +6,9 @@ from django.template import loader
 from django.views import View
 from django.views.generic import FormView, ListView, TemplateView
 from django_tables2 import SingleTableView
-from contact_form.views import ContactFormView
 from .models import Category, Quote
-from .forms import PreferencesForm, QuotesContactForm
 from .tables import QuoteTable
+from .forms import PreferencesForm
 
 
 class HomeView(View):
@@ -123,9 +122,3 @@ class PreferencesView(FormView):
                 category_prefs[str(field.category_pk)] = form.cleaned_data[field_name]
         response.set_cookie('category_prefs', json.dumps(category_prefs))
         return category_prefs
-
-class QuotesContactFormView(ContactFormView):
-    form_class = QuotesContactForm
-
-    def get_captcha_public_key(self):
-        return settings.RECAPTCHA_PUBLIC_KEY

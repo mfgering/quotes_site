@@ -25,7 +25,7 @@ SECRET_KEY = 'cw91mu-*o&huhumfb2hf&#))ym9jgae@t$eo^upnw0f1(du4hv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False if os.environ.get("DEBUG") is None else True
 
-ALLOWED_HOSTS = ['quote.klezy.xyz', '127.0.0.1']
+ALLOWED_HOSTS = ['quote.klezy.xyz', '127.0.0.1', 'localhost']
 
 INTERNAL_IPS = ['127.0.0.1']
 
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django_tables2',
     'widget_tweaks',
     'debug_toolbar',
-    'snowpenguin.django.recaptcha2',
+    # 'snowpenguin.django.recaptcha2', */
 ]
 
 MIDDLEWARE = [
@@ -141,7 +141,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "_static")
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "main", "static"),
 ]
 
 # Settings for django-bootstrap3

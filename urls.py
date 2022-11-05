@@ -1,4 +1,4 @@
-from django.conf.urls import include, url
+from django.urls import include, re_path
 from django.contrib import admin
 from django.conf import settings
 
@@ -6,15 +6,15 @@ import main.views
 
 
 urlpatterns = [
-    url(r'^', include('django.contrib.auth.urls')),
+    re_path(r'^', include('django.contrib.auth.urls')),
     # Note: Add the urls from the main app without prefixing the app name.
-    url(r'^$', main.views.HomeView.as_view(), name='index'),
-    url(r'^', include('main.urls')),
-    url(r'^admin/', admin.site.urls),
+    re_path(r'^$', main.views.HomeView.as_view(), name='index'),
+    re_path(r'^', include('main.urls')),
+    re_path(r'^admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
-        url(r'^__debug__/', include(debug_toolbar.urls)),
+        re_path(r'^__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
