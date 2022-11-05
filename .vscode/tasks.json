@@ -4,6 +4,22 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Run quotes container",
+      "type": "docker-run",
+      "dockerRun": {
+        "image": "mgering/quotes:latest",
+        "ports": [{
+          "containerPort": 8010,
+          "hostPort": 8010
+        }],
+        // "volumes": [{
+        //   "localPath": "${workspaceFolder}/assets",
+        //   "containerPath": "/assets"
+        // }],
+        "remove": true
+      }
+    },
+    {
       "label": "echo",
       "type": "shell",
       "command": "echo Hello"
