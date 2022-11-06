@@ -12,6 +12,10 @@
       "args": [
         "runserver"
       ],
+      "env": {
+        "DEBUG": "TRUE"
+      },
+      "justMyCode": false,
       "django": true
     }
   ]
