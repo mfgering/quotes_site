@@ -50,12 +50,27 @@ of modifying the `settings.py` file, create and modify
 your own `local_settings.py` file. Use the `local_settings_example.py`
 file as a starter.
 
+#### Collect Static Files
+
+
+```shell
+$ python manage.py collectstatic
+```
+
 #### Create a Database
 
 For development or testing, the `settings.py` file defines a local *sqlite* database.
 
 For exposing this app to the internet you will want a real database. Use the
 `local_settings.py` file to specify your database and credentials for accessing it.
+
+#### Make migrations
+
+```shell
+$ python manage.py makemigrations
+...
+$ python manage.py makemigrations quotes
+```
 
 #### Initialize the Database
 
@@ -91,8 +106,15 @@ $ cp -R _static/bootstrap/fonts _static/bootstrap/themes/default
 ```
 
 #### Collect Static Files
+
 ```shell
 $ python manage.py collectstatic
+```
+
+#### Migrate the Database
+
+```shell
+$ python manage.py migrate
 ```
 
 #### Load Fixtures
