@@ -98,5 +98,6 @@ ENV/
 /db.sqlite3
 .idea/
 /_static/
+/proj_settings/_static
 .htaccess
 .venv
