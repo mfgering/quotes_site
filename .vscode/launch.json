@@ -13,7 +13,8 @@
         "runserver"
       ],
       "env": {
-        "DEBUG": "TRUE"
+        "DEBUG": "TRUE",
+        "DJANGO_SETTINGS_MODULE": "proj_settings.settings"
       },
       "justMyCode": false,
       "django": true
