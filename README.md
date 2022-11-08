@@ -125,12 +125,8 @@ You can start with predefined categories and quotes:
 $ python manage.py loaddata fixtures/categories.json
 Installed 2 object(s) from 1 fixture(s)
 
-$ python manage.py loaddata fixtures/marcus.json
-Installed 267 object(s) from 1 fixture(s)
-
-$ python manage.py loaddata fixtures/ferenghi.json
-Installed 287 object(s) from 1 fixture(s)
-
+$ python manage.py loaddata fixtures/allfixtures.json
+Installed 441 object(s) from 1 fixture(s)
 
 ```
 

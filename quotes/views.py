@@ -6,6 +6,7 @@ from django.template import loader
 from django.views import View
 from django.views.generic import FormView, ListView, TemplateView
 from django_tables2 import SingleTableView
+from django.urls import reverse
 from .models import Category, Quote
 from .tables import QuoteTable
 from .forms import PreferencesForm
@@ -89,7 +90,7 @@ class AboutView(TemplateView):
 class PreferencesView(FormView):
     template_name = 'quotes/preferences.html'
     form_class = PreferencesForm
-    success_url = '/'
+    #success_url = reverse('index')
 
     def get_initial(self):
         prefs = self.get_category_prefs(self.request)

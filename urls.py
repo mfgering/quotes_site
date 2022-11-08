@@ -4,8 +4,8 @@ from django.conf import settings
 import quotes.views
 
 urlpatterns = [
-    path('', quotes.views.HomeView.as_view(), name='index'),
-    path('quotes/', include('quotes.urls')),
+    #path('', quotes.views.HomeView.as_view(), name='index'),
+    path('', include('quotes.urls')),
 
     path('admin/', admin.site.urls),
 ]

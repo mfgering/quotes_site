@@ -17,5 +17,4 @@ urlpatterns = [
             template_name='contact_form/contact_form_sent.html'),
         name='contact_form_sent'),
     path('', include("django.contrib.auth.urls")),
-
 ]
