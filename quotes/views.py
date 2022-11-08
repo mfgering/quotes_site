@@ -90,7 +90,6 @@ class AboutView(TemplateView):
 class PreferencesView(FormView):
     template_name = 'quotes/preferences.html'
     form_class = PreferencesForm
-    #success_url = reverse('index')
 
     def get_initial(self):
         prefs = self.get_category_prefs(self.request)
