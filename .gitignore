@@ -101,3 +101,4 @@ ENV/
 /proj_settings/_static
 .htaccess
 .venv
+proj_settings/db.sqlite3
