@@ -36,3 +36,7 @@ EMAIL_USE_SSL = True
 # Settings used by the recaptcha2 module.
 RECAPTCHA_PRIVATE_KEY = '<private key>'
 RECAPTCHA_PUBLIC_KEY = '<public key>'
+     
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'cw91mu-*o&huhumfb2hf&#))ym9jgae@t$eo^upnw0f1(du4hv'
+     
