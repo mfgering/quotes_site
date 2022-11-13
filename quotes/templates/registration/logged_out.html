@@ -6,13 +6,13 @@
 {% block breadcrumbs %}<div class="breadcrumbs"><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></div>{% endblock %}
 
 {% block bootstrap3_extra_head %}
-<link rel="stylesheet" type="text/css" href="{% static 'quotes/css/quotes.css' %}"type="text/css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="{% static css/quotes.css' %}"type="text/css" media="screen"/>
 {% endblock %}
 
 {% block title %}Logged Out{% endblock %}
 
 {% block content %}
     <p><a href="/login/">{% trans 'Log in again' %}</a></p>
-    <img class="marcus-img img-responsive img-rounded" alt="Marcus Aurelius" src="{% static 'quotes/images/Aurelius.jpg' %}"/>
+    <img class="marcus-img img-responsive img-rounded" alt="Marcus Aurelius" src="{% static 'images/Aurelius.jpg' %}"/>
     <p>{% trans "Misfortune nobly born is good fortune - Marcus Aurelius" %}</p>
 {% endblock %}

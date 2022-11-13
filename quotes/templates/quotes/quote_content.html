@@ -1,6 +1,6 @@
 {% load bootstrap3 %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'quotes/css/quotes.css' %}"type="text/css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/quotes.css' %}"type="text/css" media="screen"/>
 {% if quote.title %}<h1 class="quote_title">{{ quote.title }}</h1>{% endif %}
 {% if quote.subtitle %}<h2 class="quote_subtitle">{{ quote.subtitle }}</h2>{% endif %}
 <div id="quote_content" class="row quote_content" quote_id="{{ quote.id }}">

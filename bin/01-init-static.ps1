@@ -4,6 +4,6 @@ $env:DJANGO_SETTINGS_MODULE="proj_settings.settings"
 Remove-Item -Recurse -Force proj_settings/_static
 Remove-Item -Recurse -Force _static
 python manage.py collectstatic
-mkdir proj_settings/_static/bootstrap/themes/default/fonts
-Copy-Item proj_settings/_static/bootstrap/fonts/* proj_settings/_static/bootstrap/themes/default/fonts/
-Move-Item -Force proj_settings/_static _static
+mkdir _static/bootstrap/themes/default/fonts
+Copy-Item _static/bootstrap/fonts/* _static/bootstrap/themes/default/fonts/
+python manage.py collectstatic

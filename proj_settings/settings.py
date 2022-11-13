@@ -3,6 +3,7 @@ Django settings for quotes project.
 """
 
 import os
+import pathlib
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -15,6 +16,8 @@ SECRET_KEY = 'cw91mu-*o&huhumfb2hf&#))ym9jgae@t$eo^upnw0f1(du4hv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False if os.environ.get("DEBUG") is None else True
+
+USE_PROD_DB = False if os.environ.get("USE_PROD_DB") is None else True
 
 ALLOWED_HOSTS = ['quote.klezy.xyz', '127.0.0.1', 'localhost']
 
@@ -127,7 +130,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "_static")
+STATIC_ROOT = os.path.join(pathlib.Path(BASE_DIR).parent.absolute(), "_static")
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # STATICFILES_DIRS = [
