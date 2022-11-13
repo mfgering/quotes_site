@@ -19,8 +19,8 @@ class Category(models.Model):
 
 
 class Quote(models.Model):
-    title = models.CharField(max_length=255)
-    subtitle = models.CharField(max_length=255, null=True)
+    title = models.CharField(max_length=255, null=True, blank=True)
+    subtitle = models.CharField(max_length=255, null=True, blank=True)
     content = RichTextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     views = models.IntegerField(default=0)
