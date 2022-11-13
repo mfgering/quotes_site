@@ -23,5 +23,5 @@ RUN chown -R www-data:www-data quotes
 # start server
 EXPOSE 8010
 STOPSIGNAL SIGTERM
-#CMD ["/bin/bash", "/opt/app/quotes/assets/start-server.sh"]
-CMD ["/bin/sh"]
+CMD ["/bin/bash", "/opt/app/quotes/assets/start-server.sh"]
+#CMD ["/bin/sh"]
