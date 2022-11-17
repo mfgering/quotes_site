@@ -1,1 +1,1 @@
-[{"model": "quotes.category", "pk": 1, "fields": {"name": "Marcus Aurelius"}}, {"model": "quotes.category", "pk": 2, "fields": {"name": "Ferengi Rules of Acquisition"}}]
+[{"model": "quotes.category", "pk": 1, "fields": {"name": "Marcus Aurelius"}}, {"model": "quotes.category", "pk": 2, "fields": {"name": "Ferengi Rules of Acquisition"}}, {"model": "quotes.category", "pk": 3, "fields": {"name": "Found"}}]

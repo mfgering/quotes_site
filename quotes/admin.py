@@ -9,6 +9,6 @@ admin.site.register(Category, CategoryAdmin)
 
 class QuoteAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'content', 'category', 'likes', 'dislikes', 'views']
-    search_fields = ['title', 'content', 'category']
+    search_fields = ['title', 'content', 'category__name']
 admin.site.register(Quote, QuoteAdmin)
 
