@@ -25,4 +25,4 @@ EXPOSE 8010
 STOPSIGNAL SIGTERM
 ENV DJANGO_SETTINGS_MODULE=proj_settings.settings
 CMD ["/bin/bash", "/opt/app/quotes/assets/start-server.sh"]
-#CMD ["/bin/sh"]
+#CMD ["/bin/bash"]
