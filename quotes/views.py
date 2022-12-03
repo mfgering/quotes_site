@@ -120,5 +120,5 @@ class PreferencesView(FormView):
             field = form.fields[field_name]
             if hasattr(field, 'category_pk'):
                 category_prefs[str(field.category_pk)] = form.cleaned_data[field_name]
-        response.set_cookie('category_prefs', json.dumps(category_prefs) max_age=60*60*24*365)
+        response.set_cookie('category_prefs', json.dumps(category_prefs), max_age=60*60*24*365)
         return category_prefs

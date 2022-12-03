@@ -43,7 +43,7 @@ Take note of your API keys so you can configure your `local_settings.py` file la
 
 #### Create a local_settings File
 
-The settings are defined in the `settings.py` in the `quotes` directory. 
+The settings are defined in the `settings.py` in the `proj_settings` directory. 
 
 It will attempt to load a `local_settings` module. Instead
 of modifying the `settings.py` file, create and modify
