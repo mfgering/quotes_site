@@ -17,12 +17,12 @@ COPY . quotes/
 RUN chmod +x quotes/bin/*.sh
 RUN sed -i -e 's/\r$//' quotes/bin/*.sh
 #RUN pip install -r quotes/requirements.in --cache-dir /opt/app/pip_cache
-RUN pip install -r quotes/requirements.in
+RUN pip install -r quotes/requirements.txt
 RUN chown -R www-data:www-data quotes
 
 # start server
 EXPOSE 8010
 STOPSIGNAL SIGTERM
-ENV DJANGO_SETTINGS_MODULE=proj_settings.settings
+ENV DJANGO_SETTINGS_MODULE=config.settings
 CMD ["/bin/bash", "/opt/app/quotes/assets/start-server.sh"]
 #CMD ["/bin/bash"]
