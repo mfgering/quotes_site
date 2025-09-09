@@ -1,28 +1,29 @@
-# Dockerfile
+FROM python:3.12-slim
 
-FROM python:3.10
+# Install nginx and setup logging
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    nginx vim \
+    bash && \
+    rm -rf /var/lib/apt/lists/* && \
+    ln -sf /dev/stdout /var/log/nginx/access.log && \
+    ln -sf /dev/stderr /var/log/nginx/error.log
 
-# install nginx
-RUN apt-get update && apt-get install nginx vim bash -y --no-install-recommends
-COPY assets/nginx.default /etc/nginx/sites-available/default
-RUN ln -sf /dev/stdout /var/log/nginx/access.log \
-    && ln -sf /dev/stderr /var/log/nginx/error.log
-
-# copy source and install dependencies
-RUN mkdir -p /opt/app
-#RUN mkdir -p /opt/app/pip_cache
-RUN mkdir -p /opt/app/quotes
+# Setup application directory
 WORKDIR /opt/app
-COPY . quotes/
-RUN chmod +x quotes/bin/*.sh
-RUN sed -i -e 's/\r$//' quotes/bin/*.sh
-#RUN pip install -r quotes/requirements.in --cache-dir /opt/app/pip_cache
-RUN pip install -r quotes/requirements.txt
-RUN chown -R www-data:www-data quotes
 
-# start server
+COPY . /opt/app/quotes/
+
+COPY assets/nginx.default /etc/nginx/sites-available/default
+
+RUN pip3 install --upgrade pip && \
+    pip3 install --no-cache-dir -r /opt/app/quotes/requirements.txt && \
+    chown -R www-data:www-data /opt/app/quotes
+
+# Configure container
 EXPOSE 8010
 STOPSIGNAL SIGTERM
 ENV DJANGO_SETTINGS_MODULE=config.settings
+
+# Start server
 CMD ["/bin/bash", "/opt/app/quotes/assets/start-server.sh"]
-#CMD ["/bin/bash"]

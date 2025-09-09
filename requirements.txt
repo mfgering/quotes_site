@@ -6,10 +6,10 @@ django-extensions
 django-ckeditor-5
 whitenoise
 django-tables2
-mysqlclient
 django-contact-form
 django-widget-tweaks
 gunicorn
+django-allow-cidr
 
 # Debugging
 django-debug-toolbar
