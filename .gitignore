@@ -102,3 +102,7 @@ ENV/
 .htaccess
 .venv
 proj_settings/db.sqlite3
+staticfiles/*
+!staticfiles/.gitkeep
+quotes/staticfiles/*
+!quotes/staticfiles/.gitkeep

@@ -130,16 +130,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(pathlib.Path(BASE_DIR).parent.absolute(), "_static")
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "quotes", "static"),
-# ]
-
-#STATICFILES_FINDERS = ['django.contrib.staticfiles.finders.FileSystemFinder',     # finds files stored in the `STATICFILES_DIRS` setting.
-#                      ]
-# Settings for django-bootstrap3
+STATIC_ROOT = os.path.join(pathlib.Path(BASE_DIR).parent.absolute(), "staticfiles")
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "quotes", "static"),
+]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+WHITENOISE_COMPRESSION_ENABLED = True
 BOOTSTRAP3 = {
     'set_required': False,  # For Django <= 1.8 only
     'error_css_class': 'bootstrap3-error',
