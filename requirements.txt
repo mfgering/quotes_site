@@ -3,7 +3,7 @@ django-annoying
 django-bootstrap3
 django-bootstrap-themes
 django-extensions
-django-ckeditor
+django-ckeditor-5
 whitenoise
 django-tables2
 mysqlclient

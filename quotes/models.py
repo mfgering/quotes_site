@@ -1,5 +1,5 @@
 from django.db import models
-from ckeditor.fields import RichTextField
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 class CategoryManager(models.Manager):
@@ -21,7 +21,7 @@ class Category(models.Model):
 class Quote(models.Model):
     title = models.CharField(max_length=255, null=True, blank=True)
     subtitle = models.CharField(max_length=255, null=True, blank=True)
-    content = RichTextField()
+    content = CKEditor5Field('Content', config_name='extends')
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)

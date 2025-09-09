@@ -36,13 +36,40 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'bootstrap3',
-    'ckeditor',
+    'django_ckeditor_5',
     'bootstrap_themes',
     'django_tables2',
     'widget_tweaks',
     'debug_toolbar',
     # 'snowpenguin.django.recaptcha2', */
 ]
+
+# CKEditor 5 settings
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': ['heading', '|', 'bold', 'italic', 'link',
+                   'bulletedList', 'numberedList', 'blockQuote', 'imageUpload', ],
+
+    },
+    'extends': {
+        'blockToolbar': [
+            'paragraph', 'heading1', 'heading2', 'heading3',
+            '|',
+            'bulletedList', 'numberedList',
+            '|',
+            'blockQuote',
+        ],
+        'toolbar': ['heading', '|', 'bold', 'italic', 'link',
+                   'bulletedList', 'numberedList', 'blockQuote', 'imageUpload', ],
+        'image': {
+            'toolbar': ['imageTextAlternative', 'imageStyle:alignLeft', 'imageStyle:alignRight'],
+            'styles': [
+                'alignLeft',
+                'alignRight',
+            ]
+        }
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
