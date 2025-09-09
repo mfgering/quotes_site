@@ -95,13 +95,11 @@ ENV/
 # Rope project settings
 .ropeproject
 
-/db.sqlite3
 .idea/
 /_static/
 /proj_settings/_static
 .htaccess
 .venv
-proj_settings/db.sqlite3
 staticfiles/*
 !staticfiles/.gitkeep
 quotes/staticfiles/*

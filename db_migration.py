@@ -2,25 +2,23 @@ import os
 import django
 import sqlite3
 from django.db import connections
-from django.apps import apps
 
 # Set up Django environment
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 django.setup()
 
-def migrate_to_sqlite():
-    # Get all models from all installed apps
-    all_models = apps.get_models()
-    
+def migrate_quotes_tables():
     # Connect to SQLite database
     sqlite_conn = sqlite3.connect('db.sqlite3')
     sqlite_cursor = sqlite_conn.cursor()
     
     # Get MariaDB cursor
-    mariadb_cursor = connections['default'].cursor()
+    mariadb_cursor = connections['mariadb'].cursor()
     
-    for model in all_models:
-        table_name = model._meta.db_table
+    # Define tables to migrate in order
+    tables = ['quotes_category', 'quotes_quote']
+    
+    for table_name in tables:
         print(f"Migrating table: {table_name}")
         
         try:
@@ -46,6 +44,9 @@ def migrate_to_sqlite():
                 # Get column count
                 column_count = len(mariadb_cursor.description)
                 placeholders = ','.join(['?' for _ in range(column_count)])
+                
+                # Clear existing data in SQLite table
+                sqlite_cursor.execute(f"DELETE FROM {table_name}")
                 
                 # Insert data into SQLite
                 insert_sql = f"INSERT INTO {table_name} VALUES ({placeholders})"
@@ -86,4 +87,4 @@ def convert_to_sqlite_sql(mysql_sql):
     return sql
 
 if __name__ == "__main__":
-    migrate_to_sqlite()
+    migrate_quotes_tables()
