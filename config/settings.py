@@ -12,16 +12,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'cw91mu-*o&huhumfb2hf&#))ym9jgae@t$eo^upnw0f1(du4hv'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cw91mu-*o&huhumfb2hf&#))ym9jgae@t$eo^upnw0f1(du4hv')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False if os.environ.get("DEBUG") is None else True
 
-USE_PROD_DB = False if os.environ.get("USE_PROD_DB") is None else True
+# Convert comma-separated string to list, fallback to default values if not set
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1,localhost,gluon.dawson,lepton.dawson,quotes.dawson').split(',')
+ALLOWED_CIDR_NETS = os.environ.get('ALLOWED_CIDR_NETS', '192.168.1.0/24').split(',')
 
-ALLOWED_HOSTS = ['quote.klezy.xyz', '127.0.0.1', 'localhost']
-
-INTERNAL_IPS = ['127.0.0.1']
 
 # Application definition
 
@@ -158,9 +157,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(pathlib.Path(BASE_DIR).parent.absolute(), "staticfiles")
+STATIC_ROOT = os.path.join(pathlib.Path(BASE_DIR).absolute(), "staticfiles")
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "quotes", "static"),
+    ('quotes', os.path.join(BASE_DIR, "quotes", "static")),  # Namespaced static files
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 WHITENOISE_COMPRESSION_ENABLED = True
@@ -174,12 +173,3 @@ BOOTSTRAP3 = {
 LOGIN_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
-
-# Override/augment settings from a local_settings module. This is known as the Golding method.
-try:
-    LOCAL_SETTINGS
-except NameError:
-    try:
-        from .local_settings import *
-    except ImportError as e:
-        pass

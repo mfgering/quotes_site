@@ -24,6 +24,8 @@ RUN pip3 install --upgrade pip && \
 EXPOSE 8010
 STOPSIGNAL SIGTERM
 ENV DJANGO_SETTINGS_MODULE=config.settings
-
+ENV DJANGO_SECRET_KEY="your-secure-production-key-here"
+ENV ALLOWED_HOSTS="127.0.0.1,localhost,gluon.dawson,lepton.dawson,quotes.dawson"
+ENV ALLOWED_CIDR_NETS="192.168.1.0/24"
 # Start server
 CMD ["/bin/bash", "/opt/app/quotes/assets/start-server.sh"]
