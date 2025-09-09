@@ -23,7 +23,7 @@
       "program": "${workspaceFolder}/manage.py",
       "args": ["runserver"],
       "env": {
-        "PYTHONPATH": "${workspaceFolder}",
+        "USE_PROD_DB": "False"
         "DEBUG": "TRUE",
         "DJANGO_SETTINGS_MODULE": "config.settings"
       },
