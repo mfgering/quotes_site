@@ -7,7 +7,9 @@ RUN apt-get update && \
     bash && \
     rm -rf /var/lib/apt/lists/* && \
     ln -sf /dev/stdout /var/log/nginx/access.log && \
-    ln -sf /dev/stderr /var/log/nginx/error.log
+    ln -sf /dev/stderr /var/log/nginx/error.log && \
+    mkdir /quotes_db && \
+    chmod 777 /quotes_db
 
 # Setup application directory
 WORKDIR /opt/app

@@ -1,3 +1,5 @@
+There is a saved database in "db.sqlite3.save"
+If necessary, copy it to "/quotes_db/db.sqlite3"
 
 Must initialize the database
 
