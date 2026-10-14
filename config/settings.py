@@ -159,12 +159,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(pathlib.Path(BASE_DIR).absolute(), "staticfiles")
 STATICFILES_DIRS = [
-    ('quotes', os.path.join(BASE_DIR, "quotes", "static")),  # Namespaced static files
+    os.path.join(BASE_DIR, "quotes", "static"),
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 WHITENOISE_COMPRESSION_ENABLED = True
 BOOTSTRAP3 = {
-    'set_required': False,  # For Django <= 1.8 only
     'error_css_class': 'bootstrap3-error',
     'required_css_class': 'bootstrap3-required',
     'javascript_in_head': True,

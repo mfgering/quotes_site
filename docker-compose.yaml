@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8020:8020"
+    volumes:
+      - ./quotes_db:/quotes_db
+    env_file:
+      - .env
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings
+      HOST_HOSTNAME: ${HOST_HOSTNAME}
+    restart: unless-stopped
+

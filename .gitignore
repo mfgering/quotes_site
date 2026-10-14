@@ -104,3 +104,4 @@ staticfiles/*
 !staticfiles/.gitkeep
 quotes/staticfiles/*
 !quotes/staticfiles/.gitkeep
+quotes_db/
