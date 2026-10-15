@@ -1,4 +1,4 @@
-.PHONY: help build up down logs restart migrate shell
+.PHONY: help build up down logs restart migrate shell fixture
 
 help: ## Show this help message
 	@echo "Available targets:"
@@ -26,3 +26,6 @@ migrate: ## Run database migrations and collect static files
 
 shell: ## Open a Django shell in the container
 	docker compose exec web python manage.py shell
+
+fixture: ## Regenerate fixtures/allfixtures.json from the current database
+	QUOTES_DB_PATH=./quotes_db/db.sqlite3 .venv/bin/python manage.py export_allfixtures

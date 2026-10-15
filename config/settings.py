@@ -112,7 +112,9 @@ WSGI_APPLICATION = 'wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/quotes_db/db.sqlite3',
+        # /quotes_db/db.sqlite3 is the path inside the container; the
+        # QUOTES_DB_PATH env var lets management commands run on the host.
+        'NAME': os.environ.get('QUOTES_DB_PATH', '/quotes_db/db.sqlite3'),
     }
 }
 
